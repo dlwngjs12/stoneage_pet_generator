@@ -144,11 +144,12 @@ export default function PetGenerator() {
   const generate = () => {
     try {
       const elementArray = validateElements(elements);
+      const scaledElements = elementArray.map(v => v * 10); // 0~100으로 변환
       const stats = randomStatSplit(Number(total), concept, elementArray);
       const baseStats = calculateBaseStats(stats, Number(initialValue));
       const finalName = name || "이름";
       const finalId = tempId || "9999";
-      const enemybaseLine = `${finalName},컁,記,秊,므,制皐,${finalId},${initialValue},5.0,${stats[0]},${stats[1]},${stats[2]},${stats[3]},19,${captureDifficulty},${elementArray.join(",")},0,0,0,0,0,0,0,0,0,1,,,,,,${rarity},1,1,5,${imageId},1,1,,0,500,,0,500,,0,500,,0,500,,0,500,,0`;
+      const enemybaseLine = `${finalName},컁,記,秊,므,制皐,${finalId},${initialValue},5.0,${stats[0]},${stats[1]},${stats[2]},${stats[3]},19,${captureDifficulty},${scaledElements.join(",")},0,0,0,0,0,0,0,0,0,1,,,,,,${rarity},1,1,5,${imageId},1,1,,0,500,,0,500,,0,500,,0,500,,0,500,,0`;
       setResult({ stats, baseStats, elementArray, enemybaseLine });
     } catch (err: any) {
       showOverlay(err.message);
