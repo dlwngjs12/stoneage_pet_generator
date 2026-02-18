@@ -188,7 +188,7 @@ export default function PetGenerator() {
             <div className="grid grid-cols-3 gap-4">
               <InputField label="총합 스탯" type="number" value={total} onChange={v => setTotal(Number(v))} />
               <InputField label="초기수치" type="number" value={initialValue} onChange={v => setInitialValue(Number(v))} />
-              <SelectField label="컨셉" options={["공방형", "공순형", "탱커형", "밸런스형"]} value={concept} onChange={setConcept}  />
+              <SelectField label="컨셉" options={["공방형", "공순형", "탱커형", "순방형", "밸런스형"]} value={concept} onChange={setConcept}  />
             </div>
 
             {/* 속성 슬라이더 */}
