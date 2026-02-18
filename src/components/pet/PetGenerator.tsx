@@ -44,9 +44,9 @@ function applyElementBias(weights: number[], elementValues: number[]) {
 function randomStatSplit(total: number, concept: string, elementValues: number[]) {
   const baseWeights: Record<string, number[]> = {
     "공방형": [1, 1.3, 1.3, 1],
-    "공순형": [0.8, 1.5, 0.8, 1.4],
+    "공순형": [0.8, 1.3, 0.8, 1.4],
     "탱커형": [1.4, 0.8, 1.4, 1],
-    "순방형": [1, 0.8, 1.3, 1.5],
+    "순방형": [1, 0.8, 1.2, 1.5],
     "밸런스형": [1, 1, 1, 1]
   };
 
