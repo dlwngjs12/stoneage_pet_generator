@@ -198,24 +198,24 @@ export default function PetGenerator() {
             </div>
 
             {/* 총합/초기치/컨셉 */}
-			<div className="flex gap-4 mt-2 text-sm">
-			  <label className="flex items-center gap-2">
-				<input
-				  type="checkbox"
-				  checked={randomTotal}
-				  onChange={(e) => setRandomTotal(e.target.checked)}
-				/>
-				총합 랜덤 (-2~+3)
-			  </label>
+			<div className="flex gap-6 mt-3 text-sm">
 
-			  <label className="flex items-center gap-2">
-				<input
-				  type="checkbox"
-				  checked={randomInitial}
-				  onChange={(e) => setRandomInitial(e.target.checked)}
+			  <div className="flex items-center gap-3">
+				<Switch
+				  checked={randomTotal}
+				  onCheckedChange={setRandomTotal}
 				/>
-				초기값 랜덤 (-2~+2)
-			  </label>
+				<span>총합 랜덤 (-2~+3)</span>
+			  </div>
+
+			  <div className="flex items-center gap-3">
+				<Switch
+				  checked={randomInitial}
+				  onCheckedChange={setRandomInitial}
+				/>
+				<span>초기값 랜덤 (-2~+2)</span>
+			  </div>
+
 			</div>
             <div className="grid grid-cols-3 gap-4">
               <InputField label="총합 스탯" type="number" value={total} onChange={v => setTotal(Number(v))} />
