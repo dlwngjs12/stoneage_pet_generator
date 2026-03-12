@@ -205,7 +205,14 @@ export default function PetGenerator() {
 				<Switch
 				  checked={randomTotal}
 				  onCheckedChange={setRandomTotal}
-				  className="border border-gray-400 data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-200"
+				  className="
+					peer inline-flex h-6 w-11 shrink-0 cursor-pointer
+					items-center rounded-full
+					border border-gray-300
+					bg-gray-200
+					transition-colors
+					data-[state=checked]:bg-green-500
+				  "
 				/>
 				<span>총합 랜덤 (-2~+3)</span>
 			  </div>
@@ -214,7 +221,14 @@ export default function PetGenerator() {
 				<Switch
 				  checked={randomInitial}
 				  onCheckedChange={setRandomInitial}
-				  className="border border-gray-400 data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-200"
+				  className="
+					peer inline-flex h-6 w-11 shrink-0 cursor-pointer
+					items-center rounded-full
+					border border-gray-300
+					bg-gray-200
+					transition-colors
+					data-[state=checked]:bg-green-500
+				  "
 				/>
 				<span>초기값 랜덤 (-2~+2)</span>
 			  </div>
