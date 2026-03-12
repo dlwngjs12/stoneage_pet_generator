@@ -30,6 +30,10 @@ const PRESETS = {
   "화7 수3": { 지: 0, 수: 3, 화: 7, 풍: 0 }
 };
 
+function rand(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function applyElementBias(weights: number[], elementValues: number[]) {
   const [earth, water, fire, wind] = elementValues;
   const total = 10;
@@ -102,6 +106,8 @@ export default function PetGenerator() {
   const [rarity, setRarity] = useState(0);
   const [result, setResult] = useState<any>(null);
   const [overlay, setOverlay] = useState<string | null>(null);
+  const [randomTotal, setRandomTotal] = useState(false);
+  const [randomInitial, setRandomInitial] = useState(false);
 
   const showOverlay = (msg: string) => {
     setOverlay(msg);
@@ -146,6 +152,13 @@ export default function PetGenerator() {
     try {
       const elementArray = validateElements(elements);
       const scaledElements = elementArray.map(v => v * 10); // 0~100으로 변환
+      if (randomTotal) {
+        total += rand(-2, 3);
+      }
+    
+      if (randomInitial) {
+        initialValue += rand(-2, 2);
+      }
       const stats = randomStatSplit(Number(total), concept, elementArray);
       const baseStats = calculateBaseStats(stats, Number(initialValue));
       const finalName = name || "이름";
@@ -185,6 +198,25 @@ export default function PetGenerator() {
             </div>
 
             {/* 총합/초기치/컨셉 */}
+			<div className="flex gap-4 mt-2 text-sm">
+			  <label className="flex items-center gap-2">
+				<input
+				  type="checkbox"
+				  checked={randomTotal}
+				  onChange={(e) => setRandomTotal(e.target.checked)}
+				/>
+				총합 랜덤 (-2~+3)
+			  </label>
+
+			  <label className="flex items-center gap-2">
+				<input
+				  type="checkbox"
+				  checked={randomInitial}
+				  onChange={(e) => setRandomInitial(e.target.checked)}
+				/>
+				초기값 랜덤 (-2~+2)
+			  </label>
+			</div>
             <div className="grid grid-cols-3 gap-4">
               <InputField label="총합 스탯" type="number" value={total} onChange={v => setTotal(Number(v))} />
               <InputField label="초기수치" type="number" value={initialValue} onChange={v => setInitialValue(Number(v))} />
